@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 
 class Display extends StatelessWidget {
-  final String _text;
+  static const DEFAULT = Color.fromRGBO(48, 48, 48, 1);
+  static const LIGHTER = Color.fromRGBO(56, 56, 56, 1);
 
-  Display(this._text);
+  final String _text;
+  final Color colorDisplay;
+
+  Display(
+    this._text, {
+    this.colorDisplay = DEFAULT,
+  });
+
+  Display.light(
+    this._text, {
+    this.colorDisplay = LIGHTER,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
         flex: 1,
         child: Container(
-          color: Color.fromRGBO(48, 48, 48, 1),
+          color: colorDisplay,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
