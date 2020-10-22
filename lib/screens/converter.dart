@@ -1,4 +1,5 @@
 import 'package:beto_bin2dec/components/display.dart';
+import 'package:beto_bin2dec/components/keyboard.dart';
 import 'package:flutter/material.dart';
 
 class Converter extends StatelessWidget {
@@ -8,7 +9,7 @@ class Converter extends StatelessWidget {
       home: Column(
         children: <Widget>[
           Display('Display'),
-          Text('Keyboard'),
+          Keyboard(),
         ],
       ),
     );
