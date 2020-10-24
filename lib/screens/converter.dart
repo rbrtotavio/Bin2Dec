@@ -1,5 +1,6 @@
 import 'package:beto_bin2dec/components/display.dart';
 import 'package:beto_bin2dec/components/keyboard.dart';
+import 'package:beto_bin2dec/models/memory.dart';
 import 'package:flutter/material.dart';
 
 class Converter extends StatefulWidget {
@@ -8,9 +9,11 @@ class Converter extends StatefulWidget {
 }
 
 class _ConverterState extends State<Converter> {
+  final Memory memory = Memory();
+
   _onPressed(String command) {
     setState(() {
-      print(command);
+      memory.applyCommand(command);
     });
   }
 
@@ -19,8 +22,8 @@ class _ConverterState extends State<Converter> {
     return MaterialApp(
       home: Column(
         children: <Widget>[
-          Display('0'),
-          Display.light('0'),
+          Display(memory.valueBin),
+          Display.light(memory.valueDec),
           Keyboard(_onPressed),
         ],
       ),
