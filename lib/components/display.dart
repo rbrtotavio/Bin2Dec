@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Display extends StatelessWidget {
   static const DEFAULT = Color.fromRGBO(48, 48, 48, 1);
@@ -29,8 +30,10 @@ class Display extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
+                child: AutoSizeText(
                   _text,
+                  minFontSize: 20,
+                  maxFontSize: 80,
                   maxLines: 1,
                   textAlign: TextAlign.end,
                   style: TextStyle(

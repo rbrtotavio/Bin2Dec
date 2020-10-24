@@ -20,7 +20,7 @@ class Memory {
       _valueBin = '';
       _wipeValue = false;
     }
-    if (_valueBin.length == 13) {
+    if (_valueBin.length == 16) {
       return;
     }
     final currentValue = _valueBin;
