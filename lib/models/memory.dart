@@ -1,5 +1,7 @@
+import 'dart:math';
+
 class Memory {
-  String _valueBin = '0';
+  String _valueBin = '';
   bool _wipeValue = false;
   String _valueDec = '0';
 
@@ -14,16 +16,21 @@ class Memory {
   }
 
   _addDigit(String digit) {
-    final initWipeValue = (_valueBin == '0') || _wipeValue;
-
+    if (_wipeValue == true) {
+      _valueBin = '';
+      _wipeValue = false;
+    }
+    if (_valueBin.length == 13) {
+      return;
+    }
     final currentValue = _valueBin;
     _valueBin = currentValue + digit;
-    _wipeValue = false;
   }
 
   _allClear() {
-    _valueBin = '0';
+    _valueBin = '';
     _wipeValue = false;
+    _valueDec = '0';
   }
 
   String get valueBin {
@@ -38,6 +45,12 @@ class Memory {
     List<String> _valueBinArray = _valueBin.split('');
     var reversedList = new List.from(_valueBinArray.reversed);
     var result = 0;
-    for (int contador = 0; contador <= reversedList.length; contador++) {}
+    for (int contador = 0; contador < reversedList.length; contador++) {
+      if (reversedList[contador] == '1') {
+        result = result + pow(2, contador);
+      }
+    }
+    _valueDec = result.toString();
+    _wipeValue = true;
   }
 }
